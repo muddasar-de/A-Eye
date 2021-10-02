@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">A-Eye</string>
+    <string name="image_here">Image Here</string>
+    <string name="about_us_text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut augue iaculis, tincidunt neque id, posuere odio. Nam non urna libero. Sed sollicitudin convallis finibus. Quisque ut laoreet diam, eu blandit elit. Duis diam urna, pellentesque at quam vel, fringilla sollicitudin nisi. Pellentesque ac dui leo. Duis vel lorem ornare, molestie risus sit amet, mollis massa. Nunc ipsum sapien, gravida eget malesuada ut, facilisis faucibus dolor. Nullam sit amet felis eget mauris iaculis dictum non ac eros. Fusce sagittis scelerisque urna, ut venenatis massa mollis sit amet. Etiam eget augue est. Phasellus lectus nibh, bibendum ac blandit quis, fermentum in dolor. Vivamus convallis ornare tellus vitae feugiat. Curabitur eget augue in ante semper gravida eu non dui.
+    </string>
+    <string name="privacy_policy_text">
+        Sed vitae malesuada purus. Nam molestie non felis id elementum. Etiam placerat rutrum est, facilisis rhoncus tortor gravida convallis. Nunc semper luctus nisl, ut euismod massa mollis ut. Aenean rhoncus iaculis ex ac sagittis. Cras id enim vitae orci pulvinar aliquet. Mauris ornare, nibh vitae facilisis facilisis, elit quam bibendum libero, a ornare orci orci id massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut diam eu lectus pulvinar porta ut a dolor. In hac habitasse platea dictumst. Vivamus eu lorem consequat, sodales erat nec, dictum lectus. Vestibulum porttitor gravida interdum.
+    </string>
+    <string name="terms_conditions_text">
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec sit amet tempor nibh. Nullam eu feugiat sem. Ut efficitur, mauris at cursus varius, nulla augue dignissim velit, ut gravida diam odio eu nunc. Nullam at nulla nec leo fringilla molestie at iaculis lacus. Pellentesque porttitor porttitor sem, at maximus enim suscipit sit amet. Sed volutpat efficitur nisl, non sollicitudin mi varius vel. Ut elementum tincidunt elit, vel faucibus nisi interdum a.
+    </string>
+    <string name="terms_amp_conditions"><u>Terms &amp; Conditions</u></string>
+    <string name="privacy_policy"><u>Privacy Policy</u></string>
+    <string name="about_us"><u>About Us</u></string>
+</resources>

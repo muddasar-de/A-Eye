@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "244648117695",
+    "project_id": "a-eye-app-274bc",
+    "storage_bucket": "a-eye-app-274bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244648117695:android:bd3f4d0f8ed1e29c758d0a",
+        "android_client_info": {
+          "package_name": "com.scorpio.a_eye"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244648117695-v3qkhj5tuaiacimi1caff44tcdr0aelq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMn5-2iRZpJgG9hmL4zv2n4SycMt7Aa4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244648117695-v3qkhj5tuaiacimi1caff44tcdr0aelq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

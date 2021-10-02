@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_authenticationFragment"
+            app:destination="@id/authenticationFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_historyFragment"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_accountSettingFragment"
+            app:destination="@id/accountSettingFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_demoFragment"
+            app:destination="@id/demoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/authenticationFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.AuthenticationFragment"
+        android:label="fragment_authentication"
+        tools:layout="@layout/fragment_authentication" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_historyFragment_to_historyDetailsFragment"
+            app:destination="@id/historyDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountSettingFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.AccountSettingFragment"
+        android:label="fragment_account_setting"
+        tools:layout="@layout/fragment_account_setting" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_systemSettingFragment"
+            app:destination="@id/systemSettingFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_settingsFragment_to_accountSettingFragment"
+            app:destination="@id/accountSettingFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/systemSettingFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.SystemSettingFragment"
+        android:label="fragment_system_setting"
+        tools:layout="@layout/fragment_system_setting" />
+    <fragment
+        android:id="@+id/historyDetailsFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.HistoryDetailsFragment"
+        android:label="fragment_history_details"
+        tools:layout="@layout/fragment_history_details">
+        <argument
+            android:name="type"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/demoFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.DemoFragment"
+        android:label="fragment_demo"
+        tools:layout="@layout/fragment_demo" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+</navigation>
