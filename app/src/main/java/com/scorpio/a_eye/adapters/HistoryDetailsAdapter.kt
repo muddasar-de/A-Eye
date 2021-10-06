@@ -9,7 +9,7 @@ import com.scorpio.a_eye.databinding.LayoutHistoryDetailsItemBinding
 
 class HistoryDetailsAdapter : RecyclerView.Adapter<HistoryDetailsAdapter.MyViewHolder>() {
 
-    var list: List<String> = mutableListOf()
+    private var list: List<String> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(LayoutHistoryDetailsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))

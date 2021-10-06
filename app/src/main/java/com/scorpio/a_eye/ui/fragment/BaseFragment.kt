@@ -25,7 +25,8 @@ open class BaseFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.apply {
-            if (this is MainActivity) appViewModel = ViewModelProvider(this)[AppViewModel::class.java]
+            if (this is MainActivity) appViewModel =
+                ViewModelProvider(this)[AppViewModel::class.java]
         }
     }
 
@@ -35,7 +36,7 @@ open class BaseFragment : Fragment() {
                 if (currentDestination?.id != fragmentId) {
                     try {
                         if (actionId != null)
-                            navigate(actionId, bundle)
+                            navigate(actionId, bundle, navOptions)
                         else
                             navigate(fragmentId, bundle, navOptions)
                     } catch (e: Exception) {
@@ -50,7 +51,7 @@ open class BaseFragment : Fragment() {
         CoroutineScope(Main).launch {
             try {
                 Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
-            }catch (e: java.lang.Exception){
+            } catch (e: java.lang.Exception) {
 
             }
         }

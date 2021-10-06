@@ -18,7 +18,11 @@ import java.lang.StringBuilder
 class AuthenticationFragment : BaseFragment() {
 
     private lateinit var binding: FragmentAuthenticationBinding
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentAuthenticationBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -32,13 +36,19 @@ class AuthenticationFragment : BaseFragment() {
 
     private fun init() {
         with(binding) {
-            appbar.btnBack.visibility = View.INVISIBLE
             appbar.heading.text = StringBuilder().append("Sign In")
         }
     }
 
     private fun initListeners() {
         with(binding) {
+            appbar.btnBack.setOnClickListener {
+                if (groupSignIn.visibility == View.VISIBLE) {
+                    findNavController().popBackStack()
+                } else {
+                    changeView(true)
+                }
+            }
             //Click listener for button to change login/signup view.
             textChangeView.setOnClickListener {
                 if (groupSignIn.visibility == View.VISIBLE) {
@@ -51,7 +61,6 @@ class AuthenticationFragment : BaseFragment() {
             //Click listener to login/signup user.
             btnAuth.setOnClickListener {
                 activity?.apply { if (this is MainActivity) showHideLoadingDialog(true) }
-
                 if (groupSignIn.visibility == View.VISIBLE) {
                     with(signInEmail) {
                         if (text.trim().isEmpty()) {
@@ -70,7 +79,10 @@ class AuthenticationFragment : BaseFragment() {
                         }
                     }
 
-                    appViewModel.signInUser(signInEmail.text.toString(), signInPassword.text.toString())
+                    appViewModel.signInUser(
+                        signInEmail.text.toString(),
+                        signInPassword.text.toString()
+                    )
                 } else {
                     var canRegister = true
                     checkEmpty(signUpName, "Enter person name") {
@@ -169,11 +181,11 @@ class AuthenticationFragment : BaseFragment() {
     }
 
     private fun changeView(setSignInView: Boolean) {
-        Toast.makeText(requireContext(), "$setSignInView", Toast.LENGTH_SHORT).show()
         with(binding) {
             if (setSignInView) {
                 appbar.heading.text = StringBuilder().append("Sign In")
-                header.text = StringBuilder().append("Welcome").append("\n").append("to A-Eye").toString()
+                header.text =
+                    StringBuilder().append("Welcome").append("\n").append("to A-Eye").toString()
                 textChangeView.text = StringBuilder().append("Create new account")
 
                 btnAuth.text = StringBuilder().append("Sign In")
@@ -181,7 +193,8 @@ class AuthenticationFragment : BaseFragment() {
                 groupSignUp.visibility = View.GONE
             } else {
                 appbar.heading.text = StringBuilder().append("Sign Up")
-                header.text = StringBuilder().append("Create").append("\n").append("Account").toString()
+                header.text =
+                    StringBuilder().append("Create").append("\n").append("Account").toString()
                 textChangeView.text = StringBuilder().append("Already have an account?")
 
                 btnAuth.text = StringBuilder().append("Create Account")

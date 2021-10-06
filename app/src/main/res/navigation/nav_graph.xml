@@ -14,7 +14,8 @@
             android:id="@+id/action_splashFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -25,33 +26,33 @@
             android:id="@+id/action_mainFragment_to_authenticationFragment"
             app:destination="@id/authenticationFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:popEnterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_mainFragment_to_historyFragment"
             app:destination="@id/historyFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:popEnterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_mainFragment_to_settingsFragment"
             app:destination="@id/settingsFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:popEnterAnim="@android:anim/fade_in" />
 
         <action
             android:id="@+id/action_mainFragment_to_accountSettingFragment"
             app:destination="@id/accountSettingFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:popEnterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_mainFragment_to_demoFragment"
             app:destination="@id/demoFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:popEnterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_mainFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/authenticationFragment"
@@ -67,7 +68,7 @@
             android:id="@+id/action_historyFragment_to_historyDetailsFragment"
             app:destination="@id/historyDetailsFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/accountSettingFragment"
@@ -83,12 +84,12 @@
             android:id="@+id/action_settingsFragment_to_systemSettingFragment"
             app:destination="@id/systemSettingFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:popEnterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_settingsFragment_to_accountSettingFragment"
             app:destination="@id/accountSettingFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim" />
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/systemSettingFragment"

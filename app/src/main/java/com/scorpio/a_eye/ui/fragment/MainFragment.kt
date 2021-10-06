@@ -6,10 +6,12 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Surface
 import android.view.View
 import android.view.ViewGroup
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
@@ -22,6 +24,8 @@ import com.scorpio.a_eye.databinding.FragmentMainBinding
 import com.scorpio.a_eye.ui.MainActivity
 import java.io.File
 import java.lang.StringBuilder
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -72,8 +76,8 @@ class MainFragment : BaseFragment() {
                 startCamera()
             }
             drawerMain.btnClose.setOnClickListener { drawerLayout.closeDrawer(GravityCompat.START) }
-
-            contentMain.bottomFiles.setOnClickListener { appViewModel.currentScanningType.postValue(0) }
+//            contentMain.btnCapture.setOnClickListener{scanImage}
+            contentMain.bottomOcr.setOnClickListener { appViewModel.currentScanningType.postValue(0) }
             contentMain.bottomPeople.setOnClickListener { appViewModel.currentScanningType.postValue(1) }
             contentMain.bottomMoney.setOnClickListener { appViewModel.currentScanningType.postValue(2) }
             contentMain.bottomHome.setOnClickListener { appViewModel.currentScanningType.postValue(3) }
@@ -111,7 +115,7 @@ class MainFragment : BaseFragment() {
         }
         appViewModel.currentScanningType.observe(viewLifecycleOwner) {
             with(binding.contentMain) {
-                bottomFiles.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
+                bottomOcr.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
                 bottomPeople.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
                 bottomMoney.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
                 bottomHome.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
@@ -122,7 +126,7 @@ class MainFragment : BaseFragment() {
 
                 when (it) {
                     0 -> {
-                        bottomFiles.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
+                        bottomOcr.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
                     }
                     1 -> {
                         bottomPeople.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
@@ -183,6 +187,9 @@ class MainFragment : BaseFragment() {
             // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
+            imageCapture = ImageCapture.Builder()
+                .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY).build()
+
             // Preview
             val preview = Preview.Builder()
                 .build()
@@ -205,6 +212,33 @@ class MainFragment : BaseFragment() {
 
         }, ContextCompat.getMainExecutor(requireContext()))
     }
+
+
+//    private fun scanImage() {
+//        val imageCapture = imageCapture ?: return
+//        imageCapture.targetRotation = Surface.ROTATION_0
+//
+//        val photoFile = File(
+//            outputDirectoryPath,
+//            SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis()) + ".png"
+//        )
+//        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+//        imageCapture.takePicture(
+//            outputOptions,
+//            ContextCompat.getMainExecutor(requireContext()),
+//            object : ImageCapture.OnImageSavedCallback {
+//                @SuppressLint("RestrictedApi")
+//                override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+//                    performOperationAfterScan(photoFile)
+//                }
+//
+//                override fun onError(exc: ImageCaptureException) {
+//                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
+//                }
+//            }
+//        )
+//    }
+
 
     private fun getOutputDirectory(): File {
         val mediaDir = requireActivity().externalMediaDirs.firstOrNull()?.let {

@@ -40,7 +40,7 @@ class HistoryDetailsFragment : BaseFragment() {
         with(binding) {
             appbar.heading.text = if (type == 0) "Faces" else "Currency"
 
-            recyclerView.layoutManager = GridLayoutManager(requireContext(), 4)
+            recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
             recyclerView.adapter = historyDetailsAdapter
         }
     }

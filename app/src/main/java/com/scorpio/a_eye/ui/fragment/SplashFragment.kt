@@ -23,7 +23,7 @@ class SplashFragment : BaseFragment() {
 
     private fun init(){
         CoroutineScope(IO).launch {
-            delay(3000)
+            delay(5000)
             navigateToFragment(R.id.action_splashFragment_to_mainFragment, R.id.mainFragment)
         }
     }
