@@ -268,11 +268,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textFontWeight="600"
                     android:layout_marginStart="@dimen/_14sdp"
                     android:layout_toEndOf="@id/img_settings"
-                    android:text="Setting"
+                    android:text="Account Setting"
                     android:textColor="@color/black"
+                    android:textFontWeight="600"
                     android:textSize="@dimen/_12sdp" />
 
                 <ImageView
