@@ -49,7 +49,7 @@ class AccountSettingFragment : BaseFragment() {
 
     private fun init() {
         with(binding) {
-            appbar.heading.text = StringBuilder().append("Setting")
+            appbar.heading.text = StringBuilder().append("Account Setting")
         }
     }
 

@@ -30,7 +30,11 @@ class AppViewModel : ViewModel() {
      *
      * 5 -> Editing Success
      * 6 -> Editing Failure
+     *
+     * 7 -> Reset Email Success
+     * 8 -> Reset Email Failure
      */
+
     val showAuthenticationStatus: MutableLiveData<Int> = MutableLiveData(null)
     fun signInUser(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
@@ -135,6 +139,14 @@ class AppViewModel : ViewModel() {
             }
         }.addOnFailureListener {
             Log.i("ViewModelTag", "uploadImageToDatabase: image upload failed.", it)
+        }
+    }
+
+    fun resetUserPassword(email: String) {
+        auth.sendPasswordResetEmail(email).addOnCompleteListener {
+            showAuthenticationStatus.postValue(7)
+        }.addOnFailureListener {
+            showAuthenticationStatus.postValue(8)
         }
     }
 }

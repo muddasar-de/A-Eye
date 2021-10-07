@@ -75,8 +75,9 @@ class MainFragment : BaseFragment() {
                 }
                 startCamera()
             }
+            contentMain.btnCapture.setOnClickListener{scanImage()}
             drawerMain.btnClose.setOnClickListener { drawerLayout.closeDrawer(GravityCompat.START) }
-//            contentMain.btnCapture.setOnClickListener{scanImage}
+
             contentMain.bottomOcr.setOnClickListener { appViewModel.currentScanningType.postValue(0) }
             contentMain.bottomPeople.setOnClickListener { appViewModel.currentScanningType.postValue(1) }
             contentMain.bottomMoney.setOnClickListener { appViewModel.currentScanningType.postValue(2) }
@@ -203,7 +204,7 @@ class MainFragment : BaseFragment() {
 
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview
+                    this, cameraSelector, preview, imageCapture
                 )
 
             } catch (exc: Exception) {
@@ -214,30 +215,31 @@ class MainFragment : BaseFragment() {
     }
 
 
-//    private fun scanImage() {
-//        val imageCapture = imageCapture ?: return
-//        imageCapture.targetRotation = Surface.ROTATION_0
-//
-//        val photoFile = File(
-//            outputDirectoryPath,
-//            SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis()) + ".png"
-//        )
-//        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
-//        imageCapture.takePicture(
-//            outputOptions,
-//            ContextCompat.getMainExecutor(requireContext()),
-//            object : ImageCapture.OnImageSavedCallback {
-//                @SuppressLint("RestrictedApi")
-//                override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-//                    performOperationAfterScan(photoFile)
-//                }
-//
-//                override fun onError(exc: ImageCaptureException) {
-//                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
-//                }
-//            }
-//        )
-//    }
+    private fun scanImage() {
+        val imageCapture = imageCapture ?: return
+        imageCapture.targetRotation = Surface.ROTATION_0
+
+        val photoFile = File(
+            outputDirectory,
+            SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis()) + ".png"
+        )
+        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+        imageCapture.takePicture(
+            outputOptions,
+            ContextCompat.getMainExecutor(requireContext()),
+            object : ImageCapture.OnImageSavedCallback {
+                @SuppressLint("RestrictedApi")
+                override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+//                    performOperationAfterScan(imageCapture)
+//                    Log.e(TAG, "Photo captured ")
+                }
+
+                override fun onError(exc: ImageCaptureException) {
+                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
+                }
+            }
+        )
+    }
 
 
     private fun getOutputDirectory(): File {

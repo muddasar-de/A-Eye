@@ -58,6 +58,20 @@ class AuthenticationFragment : BaseFragment() {
                 }
             }
 
+            //Click listener for forgot password
+            signInForgetPassword.setOnClickListener {
+                activity?.apply { if (this is MainActivity) showHideLoadingDialog(true) }
+                with(signInEmail) {
+                    if (text.trim().isEmpty()) {
+                        error = "Enter your email"
+                        requestFocus()
+                        activity?.apply { if (this is MainActivity) showHideLoadingDialog(false) }
+                        return@setOnClickListener
+                    }
+                    appViewModel.resetUserPassword(text.trim().toString())
+                }
+            }
+
             //Click listener to login/signup user.
             btnAuth.setOnClickListener {
                 activity?.apply { if (this is MainActivity) showHideLoadingDialog(true) }
@@ -161,6 +175,12 @@ class AuthenticationFragment : BaseFragment() {
                 }
                 3 -> {
                     showToast("Registration Failed. Some error occurred. ")
+                }
+                7 -> {
+                    showToast("Email sent Successfully.")
+                }
+                8 -> {
+                    showToast("Email Send Failed. Some error occurred. ")
                 }
             }
             if (it != null)
