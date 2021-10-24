@@ -57,11 +57,12 @@
                 app:layout_constraintTop_toBottomOf="@id/divider">
 
                 <!-- Layout Sign in -->
+
                 <EditText
                     android:id="@+id/sign_in_email"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="48dp"
                     android:autofillHints="emailAddress"
                     android:background="@drawable/drawable_edit_text"
                     android:drawableStart="@drawable/ic_email"
@@ -73,6 +74,7 @@
                     android:textColorHint="@color/white"
                     android:textSize="@dimen/_12sdp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Forget Password"
+                    android:text="Forget Password?  "
                     android:textColor="@color/white"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="@id/sign_in_password"
@@ -352,7 +354,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:padding="@dimen/_8sdp"
-                android:text="Create an Account"
+                android:text="Create an Account  "
                 android:textColor="@color/white"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="@id/btn_auth"

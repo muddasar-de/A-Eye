@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.Surface
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -22,6 +23,8 @@ import com.nabinbhandari.android.permissions.Permissions
 import com.scorpio.a_eye.R
 import com.scorpio.a_eye.databinding.FragmentMainBinding
 import com.scorpio.a_eye.ui.MainActivity
+import com.scorpio.a_eye.ui.PerformOperations
+import okhttp3.OkHttpClient
 import java.io.File
 import java.lang.StringBuilder
 import java.text.SimpleDateFormat
@@ -32,7 +35,7 @@ import java.util.concurrent.Executors
 class MainFragment : BaseFragment() {
 
     private lateinit var binding: FragmentMainBinding
-
+    private lateinit var caputuredImage:capturedImageViewFragment
     private var imageCapture: ImageCapture? = null
 
     private lateinit var outputDirectory: File
@@ -75,7 +78,7 @@ class MainFragment : BaseFragment() {
                 }
                 startCamera()
             }
-            contentMain.btnCapture.setOnClickListener{scanImage()}
+//            contentMain.btnCapture.setOnClickListener{scanImage()}
             drawerMain.btnClose.setOnClickListener { drawerLayout.closeDrawer(GravityCompat.START) }
 
             contentMain.bottomOcr.setOnClickListener { appViewModel.currentScanningType.postValue(0) }
@@ -128,6 +131,11 @@ class MainFragment : BaseFragment() {
                 when (it) {
                     0 -> {
                         bottomOcr.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
+                        binding.contentMain.btnCapture.setOnClickListener{
+                            scanImage()
+                            PerformOperations.announceCurrentCall(requireContext(), "The foundation-conference of COMSATS was held at Islamabad on 4th & 5th October 1994. Representatives from thirty-six countries attended. The participants included twenty-two Ministers, members of the diplomatic community of Islamabad and representatives of international organizations, like UNESCO, UNIDO, UNEP and the World Bank.")
+
+                        }
                     }
                     1 -> {
                         bottomPeople.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
@@ -214,6 +222,45 @@ class MainFragment : BaseFragment() {
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
+//    private fun uploadFile() {
+//        if (postPath == null || postPath == "") {
+//            Toast.makeText(this, "please select an image ", Toast.LENGTH_LONG).show()
+//            return
+//        } else {
+//            showpDialog()
+//
+//            // Map is used to multipart the file using okhttp3.RequestBody
+//            val map = HashMap<String, RequestBody>()
+//            val file = File(postPath!!)
+//
+//            // Parsing any Media type file
+//            val requestBody = RequestBody.create(MediaType.parse("/"), file)
+//            map.put("file\"; filename=\"" + file.name + "\"", requestBody)
+//            val getResponse = AppConfig.getRetrofit().create(ApiConfig::class.java)
+//            val call = getResponse.upload("token", map)
+//            call.enqueue(object : Callback<ServerResponse> {
+//                override fun onResponse(call: Call<ServerResponse>, response: Response<ServerResponse>) {
+//                    if (response.isSuccessful) {
+//                        if (response.body() != null) {
+//                            hidepDialog()
+//                            val serverResponse = response.body()
+//                            Toast.makeText(applicationContext, serverResponse.message, Toast.LENGTH_SHORT).show()
+//
+//                        }
+//                    } else {
+//                        hidepDialog()
+//                        Toast.makeText(applicationContext, "problem uploading image", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<ServerResponse>, t: Throwable) {
+//                    hidepDialog()
+//                    Log.v("Response gotten is", t.message)
+//                }
+//            })
+//        }
+//    }
+
 
     private fun scanImage() {
         val imageCapture = imageCapture ?: return
@@ -230,6 +277,7 @@ class MainFragment : BaseFragment() {
             object : ImageCapture.OnImageSavedCallback {
                 @SuppressLint("RestrictedApi")
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+
 //                    performOperationAfterScan(imageCapture)
 //                    Log.e(TAG, "Photo captured ")
                 }
