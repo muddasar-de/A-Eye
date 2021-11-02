@@ -115,4 +115,14 @@
         android:name="com.scorpio.a_eye.ui.fragment.AboutUsFragment"
         android:label="fragment_about_us"
         tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/capturedImageViewFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.capturedImageViewFragment"
+        android:label="fragment_captured_image_view"
+        tools:layout="@layout/fragment_captured_image_view" >
+        <action
+            android:id="@+id/action_capturedImageViewFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/nav_graph" />
+    </fragment>
 </navigation>

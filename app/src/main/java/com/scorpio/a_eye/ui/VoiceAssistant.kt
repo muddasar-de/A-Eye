@@ -8,7 +8,7 @@ import android.widget.Toast
 import java.util.*
 
 
-object PerformOperations {
+object VoiceAssistant {
     var t1: TextToSpeech? = null
     fun announceCurrentCall(context: Context, textToSpeak: String) {
 //        Toast.makeText(context, "Speech Check", Toast.LENGTH_LONG).show()
@@ -28,8 +28,8 @@ object PerformOperations {
                         null, ""
 
                     )
-                    Toast.makeText(context, "Speech No Error", Toast.LENGTH_LONG).show()
-                }, 1000)
+
+                }, 500)
 
             }
         }

@@ -10,6 +10,7 @@ import android.view.Surface
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -23,7 +24,8 @@ import com.nabinbhandari.android.permissions.Permissions
 import com.scorpio.a_eye.R
 import com.scorpio.a_eye.databinding.FragmentMainBinding
 import com.scorpio.a_eye.ui.MainActivity
-import com.scorpio.a_eye.ui.PerformOperations
+
+import com.scorpio.a_eye.ui.VoiceAssistant
 import okhttp3.OkHttpClient
 import java.io.File
 import java.lang.StringBuilder
@@ -35,7 +37,7 @@ import java.util.concurrent.Executors
 class MainFragment : BaseFragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private lateinit var caputuredImage:capturedImageViewFragment
+
     private var imageCapture: ImageCapture? = null
 
     private lateinit var outputDirectory: File
@@ -132,28 +134,35 @@ class MainFragment : BaseFragment() {
                     0 -> {
                         bottomOcr.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
                         binding.contentMain.btnCapture.setOnClickListener{
-                            scanImage()
-                            PerformOperations.announceCurrentCall(requireContext(), "The foundation-conference of COMSATS was held at Islamabad on 4th & 5th October 1994. Representatives from thirty-six countries attended. The participants included twenty-two Ministers, members of the diplomatic community of Islamabad and representatives of international organizations, like UNESCO, UNIDO, UNEP and the World Bank.")
+                            VoiceAssistant.announceCurrentCall(requireContext(), "OCR is enabled")
+                            captureImage()
+                            VoiceAssistant.announceCurrentCall(requireContext(), "Picture is Captured")
 
                         }
                     }
                     1 -> {
                         bottomPeople.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
+                        VoiceAssistant.announceCurrentCall(requireContext(), "Face Detection is enabled")
                     }
                     2 -> {
                         bottomMoney.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
+                        VoiceAssistant.announceCurrentCall(requireContext(), "Currency Detection is enabled")
                     }
                     3 -> {
                         bottomHome.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
+                        VoiceAssistant.announceCurrentCall(requireContext(), "Object Detection is enabled")
                     }
                     4 -> {
                         bottomColors.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
+                        VoiceAssistant.announceCurrentCall(requireContext(), "Color Detection is enabled")
                     }
                     5 -> {
                         bottomBarcode.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
+                        VoiceAssistant.announceCurrentCall(requireContext(), "QR code Detection is enabled")
                     }
                     6 -> {
                         bottomStreetView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.icon_selected))
+                        VoiceAssistant.announceCurrentCall(requireContext(), "Scene Detection is enabled")
                     }
                 }
             }
@@ -262,7 +271,7 @@ class MainFragment : BaseFragment() {
 //    }
 
 
-    private fun scanImage() {
+    private fun captureImage() {
         val imageCapture = imageCapture ?: return
         imageCapture.targetRotation = Surface.ROTATION_0
 
@@ -270,6 +279,7 @@ class MainFragment : BaseFragment() {
             outputDirectory,
             SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis()) + ".png"
         )
+
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
         imageCapture.takePicture(
             outputOptions,
@@ -277,9 +287,17 @@ class MainFragment : BaseFragment() {
             object : ImageCapture.OnImageSavedCallback {
                 @SuppressLint("RestrictedApi")
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                    showToast("Image Captured")
+                    Log.i("stuts","Succcess1")
+          val data :Bundle = Bundle()
+
+         data.putString("PhotoPath", photoFile.absolutePath)
+        val caputuredImage:capturedImageViewFragment = capturedImageViewFragment()
+           caputuredImage.arguments = data
+        fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment,caputuredImage)?.commit()
 
 //                    performOperationAfterScan(imageCapture)
-//                    Log.e(TAG, "Photo captured ")
+                    Log.e(TAG, "Photo captured ")
                 }
 
                 override fun onError(exc: ImageCaptureException) {
@@ -287,6 +305,8 @@ class MainFragment : BaseFragment() {
                 }
             }
         )
+        // send photo file to capturedImageFragment
+//
     }
 
 

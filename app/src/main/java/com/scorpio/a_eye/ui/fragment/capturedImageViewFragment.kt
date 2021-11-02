@@ -11,6 +11,12 @@ import com.scorpio.a_eye.databinding.FragmentAccountSettingBinding
 import com.scorpio.a_eye.databinding.FragmentCapturedImageViewBinding
 import java.io.File
 import java.net.URI
+import android.graphics.BitmapFactory
+
+import android.graphics.Bitmap
+import android.net.Uri
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 
 
 class capturedImageViewFragment : BaseFragment() {
@@ -23,12 +29,31 @@ class capturedImageViewFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCapturedImageViewBinding.inflate(layoutInflater, container, false)
+
         return binding.root
     }
-
-    fun add(num1:Int, num2:Int):Int{
-        return num1+num2
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val args = this.arguments
+        val photoPath = args?.get("PhotoPath")
+        context?.let {
+            Glide.with(it)
+                .load(photoPath)
+                .into(binding.capturedImageView)
+        }
+        init()
+        initListeners()
     }
+private fun init() {
+    binding.appbar.heading.text = "Captured Image"
+}
+
+    private fun initListeners() {
+        binding.appbar.btnBack.setOnClickListener { findNavController().navigate(R.id.nav_graph)
+        }
+
+    }
+
 }
 
 
