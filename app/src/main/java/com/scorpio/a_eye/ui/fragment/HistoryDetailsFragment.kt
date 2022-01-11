@@ -1,5 +1,6 @@
 package com.scorpio.a_eye.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.scorpio.a_eye.adapters.HistoryDetailsAdapter
 import com.scorpio.a_eye.databinding.FragmentHistoryDetailsBinding
+import com.scorpio.a_eye.ui.FaceTrainActivity
 import com.scorpio.a_eye.utils.Constants
 
 class HistoryDetailsFragment : BaseFragment() {
@@ -42,6 +44,12 @@ class HistoryDetailsFragment : BaseFragment() {
 
             recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
             recyclerView.adapter = historyDetailsAdapter
+
+            historyDetailsAdapter.clickListener = object : HistoryDetailsAdapter.ClickListener {
+                override fun onClickListener() {
+                    startActivity(Intent(requireContext(), FaceTrainActivity::class.java).putExtra("guideEmail", appViewModel.currentUser.value?.guideEmail))
+                }
+            }
         }
     }
 
@@ -59,6 +67,10 @@ class HistoryDetailsFragment : BaseFragment() {
                         historyDetailsAdapter.setData(it.faces)
                         binding.groupNoItems.visibility = View.GONE
                     } else {
+                        startActivity(
+                            Intent(requireActivity(), FaceTrainActivity::class.java)
+                                .putExtra("guideEmail", it.guideEmail)
+                        )
                         binding.groupNoItems.visibility = View.VISIBLE
                         binding.noItemHeading.text = "No faces found."
                     }

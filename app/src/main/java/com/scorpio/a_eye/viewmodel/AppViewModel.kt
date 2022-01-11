@@ -20,6 +20,7 @@ class AppViewModel : ViewModel() {
     private val storage = FirebaseStorage.getInstance()
 
     val currentUser: MutableLiveData<Guide> = MutableLiveData(null)
+    val captureImagePressed: MutableLiveData<Boolean> = MutableLiveData(false)
 
     /**
      * 0 -> Login Success

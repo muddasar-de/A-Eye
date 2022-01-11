@@ -53,6 +53,12 @@
             app:destination="@id/aboutUsFragment"
             app:enterAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in" />
+        <action
+            android:id="@+id/action_mainFragment_to_notifierAlarmFragment"
+            app:destination="@id/notifierAlarmFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_historyDetailsFragment"
+            app:destination="@id/historyDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/authenticationFragment"
@@ -125,4 +131,9 @@
             app:destination="@id/mainFragment"
             app:popUpTo="@id/nav_graph" />
     </fragment>
+    <fragment
+        android:id="@+id/notifierAlarmFragment"
+        android:name="com.scorpio.a_eye.ui.fragment.NotifierAlarmFragment"
+        android:label="fragment_notifier_alarm"
+        tools:layout="@layout/fragment_notifier_alarm" />
 </navigation>

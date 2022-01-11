@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.scorpio.a_eye.R
 import com.scorpio.a_eye.databinding.FragmentSplashBinding
-import com.scorpio.a_eye.ui.VoiceAssistant
+import com.scorpio.a_eye.voiceutils.VoiceAssistant
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay

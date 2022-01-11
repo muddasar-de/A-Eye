@@ -1,9 +1,6 @@
-package com.scorpio.a_eye.Services
+package com.scorpio.a_eye.services
 
 import com.google.gson.annotations.SerializedName
-
-
-
 
 class ServerResponse {
     // variable name should be same as in the json response from php

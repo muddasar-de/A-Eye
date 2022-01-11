@@ -51,10 +51,8 @@ class DemoFragment : BaseFragment() {
             settings.loadWithOverviewMode = true
             settings.useWideViewPort = true
 
-            loadUrl("https://www.youtube.com/watch?v=tO2F9tBJCs4")
+            loadUrl("https://youtu.be/z0jVkrZeGgo")
         }
-
-
     }
 
     private fun initListeners() {

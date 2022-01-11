@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
     id 'com.google.gms.google-services'
 }
 
@@ -83,4 +84,20 @@ dependencies {
 
     //For GSON
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    //OpenCV
+//    implementation 'com.quickbirdstudios:opencv:4.5.3.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+
+    implementation 'com.google.android.gms:play-services-mlkit-barcode-scanning:16.2.1'
+
+    implementation 'com.google.mlkit:object-detection:16.2.7'
+
+    //room databse
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+
 }

@@ -2,8 +2,8 @@ package com.scorpio.a_eye.ui
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +13,7 @@ import com.google.firebase.ktx.Firebase
 import com.scorpio.a_eye.databinding.ActivityMainBinding
 import com.scorpio.a_eye.databinding.DialogLoadingBinding
 import com.scorpio.a_eye.viewmodel.AppViewModel
+import com.scorpio.a_eye.voiceutils.VoiceAssistant
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,5 +52,24 @@ class MainActivity : AppCompatActivity() {
             loadingDialog.show()
         else
             loadingDialog.dismiss()
+    }
+
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        val action = event.action
+        return when (event.keyCode) {
+            KeyEvent.KEYCODE_VOLUME_DOWN -> {
+                if (action == KeyEvent.ACTION_DOWN) {
+                    appViewModel.captureImagePressed.postValue(true)
+                }
+                true
+            }
+            KeyEvent.KEYCODE_VOLUME_UP -> {
+                if (VoiceAssistant.appViewModel == null)
+                    VoiceAssistant.appViewModel = appViewModel
+                VoiceAssistant.startListening(applicationContext)
+                true
+            }
+            else -> super.dispatchKeyEvent(event)
+        }
     }
 }

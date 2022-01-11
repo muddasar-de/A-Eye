@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.scorpio.a_eye">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera.any" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
 
     <application
         android:name=".MyApplication"
@@ -18,8 +35,11 @@
         android:theme="@style/Theme.AEye"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.speechToText"
-            android:exported="false" />
+            android:name=".ui.FaceTrainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.NotifierActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
@@ -30,6 +50,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".alarmmanager.AlarmBroadcast"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".alarmmanager.SnoozeBroadcast"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".alarmmanager.NotificationDismissReciver"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".alarmmanager.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <meta-data
             android:name="preloaded_fonts"

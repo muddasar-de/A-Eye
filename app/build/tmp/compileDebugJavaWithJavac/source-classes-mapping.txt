@@ -1,0 +1,59 @@
+com/scorpio/a_eye/databinding/AppbarMainBinding.java
+ com.scorpio.a_eye.databinding.AppbarMainBinding
+com/scorpio/a_eye/databinding/LayoutDrawerMenuBinding.java
+ com.scorpio.a_eye.databinding.LayoutDrawerMenuBinding
+com/scorpio/a_eye/databinding/FragmentNotifierAlarmBinding.java
+ com.scorpio.a_eye.databinding.FragmentNotifierAlarmBinding
+com/scorpio/a_eye/databinding/DialogImageCaptureBinding.java
+ com.scorpio.a_eye.databinding.DialogImageCaptureBinding
+com/scorpio/a_eye/databinding/FragmentAboutUsBinding.java
+ com.scorpio.a_eye.databinding.FragmentAboutUsBinding
+com/scorpio/a_eye/databinding/ActivityFaceTrainBinding.java
+ com.scorpio.a_eye.databinding.ActivityFaceTrainBinding
+com/scorpio/a_eye/databinding/LayoutNotifierItemBinding.java
+ com.scorpio.a_eye.databinding.LayoutNotifierItemBinding
+com/scorpio/a_eye/databinding/FragmentAuthenticationBinding.java
+ com.scorpio.a_eye.databinding.FragmentAuthenticationBinding
+com/scorpio/a_eye/databinding/FragmentCapturedImageViewBinding.java
+ com.scorpio.a_eye.databinding.FragmentCapturedImageViewBinding
+com/scorpio/a_eye/databinding/DialogEditDataBinding.java
+ com.scorpio.a_eye.databinding.DialogEditDataBinding
+com/scorpio/a_eye/databinding/FragmentSettingsBinding.java
+ com.scorpio.a_eye.databinding.FragmentSettingsBinding
+com/scorpio/a_eye/databinding/FragmentHistoryBinding.java
+ com.scorpio.a_eye.databinding.FragmentHistoryBinding
+com/scorpio/a_eye/databinding/FragmentSystemSettingBinding.java
+ com.scorpio.a_eye.databinding.FragmentSystemSettingBinding
+com/scorpio/a_eye/databinding/FragmentDemoBinding.java
+ com.scorpio.a_eye.databinding.FragmentDemoBinding
+com/scorpio/a_eye/databinding/DialogSetAlarmBinding.java
+ com.scorpio.a_eye.databinding.DialogSetAlarmBinding
+com/scorpio/a_eye/databinding/LayoutHistoryDetailsItemBinding.java
+ com.scorpio.a_eye.databinding.LayoutHistoryDetailsItemBinding
+com/scorpio/a_eye/databinding/FragmentAccountSettingBinding.java
+ com.scorpio.a_eye.databinding.FragmentAccountSettingBinding
+com/scorpio/a_eye/database/AlarmDatebase_Impl.java
+ com.scorpio.a_eye.database.AlarmDatebase_Impl
+ com.scorpio.a_eye.database.AlarmDatebase_Impl$1
+com/scorpio/a_eye/databinding/FragmentSplashBinding.java
+ com.scorpio.a_eye.databinding.FragmentSplashBinding
+com/scorpio/a_eye/databinding/ContentMainBinding.java
+ com.scorpio.a_eye.databinding.ContentMainBinding
+com/scorpio/a_eye/database/AlarmDao_Impl.java
+ com.scorpio.a_eye.database.AlarmDao_Impl
+ com.scorpio.a_eye.database.AlarmDao_Impl$1
+ com.scorpio.a_eye.database.AlarmDao_Impl$2
+ com.scorpio.a_eye.database.AlarmDao_Impl$3
+ com.scorpio.a_eye.database.AlarmDao_Impl$4
+ com.scorpio.a_eye.database.AlarmDao_Impl$5
+ com.scorpio.a_eye.database.AlarmDao_Impl$6
+com/scorpio/a_eye/databinding/ActivityMainBinding.java
+ com.scorpio.a_eye.databinding.ActivityMainBinding
+com/scorpio/a_eye/databinding/FragmentHistoryDetailsBinding.java
+ com.scorpio.a_eye.databinding.FragmentHistoryDetailsBinding
+com/scorpio/a_eye/BuildConfig.java
+ com.scorpio.a_eye.BuildConfig
+com/scorpio/a_eye/databinding/DialogLoadingBinding.java
+ com.scorpio.a_eye.databinding.DialogLoadingBinding
+com/scorpio/a_eye/databinding/FragmentMainBinding.java
+ com.scorpio.a_eye.databinding.FragmentMainBinding
